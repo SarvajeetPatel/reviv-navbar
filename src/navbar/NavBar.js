@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MainMenu from './MainMenu'
 import { Outlet } from 'react-router-dom'
 
@@ -31,14 +31,16 @@ function NavBar() {
                                             <div className='tabs'>
                                                 <div>
                                                     {[...new Set(services.nutrients.map(item => item.type))].map((headings) => (
-                                                        <ul> <li><button onClick={() => handleImage(headings, services.nutrients)}>{headings}</button></li></ul>
+                                                        <ul><button onClick={() => handleImage(headings, services.nutrients)}>{headings}</button></ul>
                                                     ))}
                                                 </div>
                                                 <div>
-                                                    {images.map(serv => (
+                                                    {images.length > 0 ? images.map(serv => (
                                                         serv.icon !== null &&
                                                         <img src={serv?.icon?.url} style={{ height: '50px', width: '50px' }} alt='no photo' />
-                                                    ))}
+                                                    )) :
+                                                        services.nutrients.map((serv) => (serv.type === 'B Complex' && serv.icon !== null) &&
+                                                            <img src={serv?.icon?.url} style={{ height: '50px', width: '50px' }} alt='no photo' />)}
                                                 </div>
                                             </div>
                                         </div>
