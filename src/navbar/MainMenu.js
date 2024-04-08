@@ -1,4 +1,4 @@
-{
+const MainMenu = {
     "locale": "en",
     "id": 1,
     "mainMenu": [
@@ -706,3 +706,5 @@
         }
     ]
 }
+
+export default MainMenu;
