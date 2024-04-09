@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import MainMenu from './MainMenu'
 import { Outlet } from 'react-router-dom'
 
@@ -37,10 +37,10 @@ function NavBar() {
                                                 <div>
                                                     {images.length > 0 ? images.map(serv => (
                                                         serv.icon !== null &&
-                                                        <img src={serv?.icon?.url} style={{ height: '50px', width: '50px' }} alt='no photo' />
+                                                        <img src={serv?.icon?.url} style={{ height: '50px', width: '50px' }} alt='not' />
                                                     )) :
                                                         services.nutrients.map((serv) => (serv.type === 'B Complex' && serv.icon !== null) &&
-                                                            <img src={serv?.icon?.url} style={{ height: '50px', width: '50px' }} alt='no photo' />)}
+                                                            <img src={serv?.icon?.url} style={{ height: '50px', width: '50px' }} alt='not' />)}
                                                 </div>
                                             </div>
                                         </div>
@@ -51,7 +51,7 @@ function NavBar() {
                                         ))
                                     }
                                 </div> </>
-                            : <button className='dropbtn'> {services.linkText} </button>
+                            : <button className='dropbtn'> <a href={`/${services?.page?.slug}`}>{services.linkText}</a> </button>
                         }
                     </div>
                 ))}
